@@ -14,6 +14,7 @@
 		9829D97C20E2FD6B000E5A88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9829D97A20E2FD6B000E5A88 /* LaunchScreen.storyboard */; };
 		9829D98420E2FEA3000E5A88 /* Filme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9829D98320E2FEA3000E5A88 /* Filme.swift */; };
 		9829D98620E311BC000E5A88 /* FilmeCelula.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9829D98520E311BC000E5A88 /* FilmeCelula.swift */; };
+		98FAEF0920E4415D00D34C1F /* DetalhesFilmesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FAEF0820E4415D00D34C1F /* DetalhesFilmesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		9829D97D20E2FD6B000E5A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9829D98320E2FEA3000E5A88 /* Filme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filme.swift; sourceTree = "<group>"; };
 		9829D98520E311BC000E5A88 /* FilmeCelula.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmeCelula.swift; sourceTree = "<group>"; };
+		98FAEF0820E4415D00D34C1F /* DetalhesFilmesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalhesFilmesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				9829D97320E2FD6A000E5A88 /* ViewController.swift */,
 				9829D98320E2FEA3000E5A88 /* Filme.swift */,
 				9829D97520E2FD6A000E5A88 /* Main.storyboard */,
+				98FAEF0820E4415D00D34C1F /* DetalhesFilmesViewController.swift */,
 				9829D98520E311BC000E5A88 /* FilmeCelula.swift */,
 				9829D97820E2FD6B000E5A88 /* Assets.xcassets */,
 				9829D97A20E2FD6B000E5A88 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				9829D98420E2FEA3000E5A88 /* Filme.swift in Sources */,
 				9829D97220E2FD6A000E5A88 /* AppDelegate.swift in Sources */,
 				9829D98620E311BC000E5A88 /* FilmeCelula.swift in Sources */,
+				98FAEF0920E4415D00D34C1F /* DetalhesFilmesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

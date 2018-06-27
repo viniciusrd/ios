@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,12 +26,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sXf-w5-b7g">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sXf-w5-b7g">
                                             <rect key="frame" x="8" y="7" width="84" height="84"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="84" id="Hwh-ZM-fzo"/>
                                                 <constraint firstAttribute="height" constant="84" id="ytp-pK-eI4"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="42"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="heD-J9-JYR">
                                             <rect key="frame" x="118" y="28" width="52.5" height="44"/>
@@ -61,6 +67,7 @@
                                     <outlet property="descricaoFilmeLabel" destination="tWH-bR-Hgh" id="GgP-Uu-mqb"/>
                                     <outlet property="filmeImageView" destination="sXf-w5-b7g" id="a2r-x6-buo"/>
                                     <outlet property="tituloFilmeLabel" destination="MQy-SY-QKE" id="m8a-aF-qDD"/>
+                                    <segue destination="MaZ-yI-ogL" kind="show" identifier="detalheFilmeSegue" id="V8x-t2-yA0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -74,6 +81,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCN-6B-DPK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="575.20000000000005" y="59.820089955022496"/>
+        </scene>
+        <!--Detalhes Filme View Controller-->
+        <scene sceneID="dGE-EK-5iu">
+            <objects>
+                <viewController id="MaZ-yI-ogL" customClass="DetalhesFilmeViewController" customModule="Meus_Filmes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="trH-hz-c1g">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="filme2" translatesAutoresizingMaskIntoConstraints="NO" id="2e2-gj-xB1">
+                                <rect key="frame" x="8" y="72" width="304" height="285"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xn6-qp-qSb">
+                                <rect key="frame" x="8" y="365" width="304" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Descricao" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVj-ha-x3c">
+                                <rect key="frame" x="8" y="397" width="304" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <color key="textColor" red="0.78784812179999997" green="0.78784812179999997" blue="0.78784812179999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4K6-x8-9Pc" firstAttribute="trailing" secondItem="xn6-qp-qSb" secondAttribute="trailing" constant="8" id="813-F6-vgk"/>
+                            <constraint firstItem="KVj-ha-x3c" firstAttribute="leading" secondItem="4K6-x8-9Pc" secondAttribute="leading" constant="8" id="EAj-8C-u36"/>
+                            <constraint firstItem="4K6-x8-9Pc" firstAttribute="trailing" secondItem="2e2-gj-xB1" secondAttribute="trailing" constant="8" id="Ede-AR-HKx"/>
+                            <constraint firstItem="4K6-x8-9Pc" firstAttribute="bottom" secondItem="KVj-ha-x3c" secondAttribute="bottom" constant="8" id="Es7-1g-94X"/>
+                            <constraint firstItem="2e2-gj-xB1" firstAttribute="top" secondItem="4K6-x8-9Pc" secondAttribute="top" constant="8" id="FCQ-sv-K3X"/>
+                            <constraint firstItem="4K6-x8-9Pc" firstAttribute="trailing" secondItem="KVj-ha-x3c" secondAttribute="trailing" constant="8" id="UBp-Y8-xnW"/>
+                            <constraint firstItem="xn6-qp-qSb" firstAttribute="leading" secondItem="4K6-x8-9Pc" secondAttribute="leading" constant="8" id="Vky-O8-G8y"/>
+                            <constraint firstItem="KVj-ha-x3c" firstAttribute="top" secondItem="xn6-qp-qSb" secondAttribute="bottom" constant="8" id="fUU-aw-XPa"/>
+                            <constraint firstItem="2e2-gj-xB1" firstAttribute="leading" secondItem="4K6-x8-9Pc" secondAttribute="leading" constant="8" id="mrU-W9-gJL"/>
+                            <constraint firstItem="xn6-qp-qSb" firstAttribute="top" secondItem="2e2-gj-xB1" secondAttribute="bottom" constant="8" id="y27-MO-shN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4K6-x8-9Pc"/>
+                    </view>
+                    <connections>
+                        <outlet property="detalheDescFilme" destination="KVj-ha-x3c" id="ICl-JS-dLS"/>
+                        <outlet property="detalheFilmeImageView" destination="2e2-gj-xB1" id="zJt-Wn-hIS"/>
+                        <outlet property="detalheTituloFilme" destination="xn6-qp-qSb" id="WvO-Xa-pdp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3mB-e3-Xzt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1286.25" y="61.267605633802816"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cc0-qv-W77">
@@ -94,4 +150,7 @@
             <point key="canvasLocation" x="-364" y="59.820089955022496"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="filme2" width="252" height="268"/>
+    </resources>
 </document>

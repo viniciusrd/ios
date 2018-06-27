@@ -69,10 +69,31 @@ class ViewController: UITableViewController {
         celula.imageView?.image = filme.imagem;
         celula.tituloFilmeLabel.text = filme.titulo;
         celula.descricaoFilmeLabel.text = filme.descricao;
+        
+        //arredondando imagens
+//        celula.filmeImageView.layer.cornerRadius = 42;
+//        celula.filmeImageView.clipsToBounds = true;
+        
 //        celula.textLabel?.text = filme.titulo;
 //        celula.imageView?.image = filme.imagem;
         
         return celula;
+        
+    }
+    
+    // metado para passar dados entre view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "detalheFilmeSegue"{
+            
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let filmeSelecionado = self.filmes[ indexPath.row ];
+                let viewControllerDestino = segue.destination as! DetalhesFilmeViewController;
+                
+                viewControllerDestino.filme = filmeSelecionado;
+            }
+            
+        }
         
     }
     
