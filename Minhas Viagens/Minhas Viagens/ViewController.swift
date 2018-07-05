@@ -14,16 +14,77 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var map: MKMapView!
     
     var locationManager = CLLocationManager();
+    var travel: Dictionary<String,String> = [:];
+    var indexSelected: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        mapConfig();
         
+        
+        
+        if let index = indexSelected{
+            if index == -1{
+                mapConfig();
+            }else{
+                showAnnotationMap(travel: self.travel);
+            }
+        }
+        
+        //rechonecedor de gesto
         let gestureRecongnizer = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.markMap(gesture:)));
         gestureRecongnizer.minimumPressDuration = 2;
         map.addGestureRecognizer(gestureRecongnizer);
         
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let local = locations.last!;
+        //exibir local do usuario
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(local.coordinate.latitude, local.coordinate.longitude);
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01);
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span);
+        self.map.setRegion(region, animated: true);
+    }
+    
+    //montar anotacao da marcacao
+    func showAnnotationMap(travel: Dictionary<String,String>){
+        // exibir anotao com os dados do endereço
+        if let local = travel["local"]{
+            if let latitudeS = travel["latitude"]{
+                if let longitudeS = travel["longitude"]{
+                    if let latitude = Double(latitudeS){
+                        if let longitude = Double(longitudeS)
+                        {
+                            
+                            let annotation = MKPointAnnotation();
+                            annotation.coordinate.latitude = latitude;
+                            annotation.coordinate.longitude = longitude;
+                            annotation.title = local;
+                            self.map.addAnnotation(annotation);
+                            
+                            //exibir local do usuario
+//                            let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude);
+//                            let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01);
+//                            let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span);
+//                            self.map.setRegion(region, animated: true);
+
+                            showLocal(latitude: latitude, longitude: longitude);
+                        }
+                    }
+                    
+                    
+                    
+                }
+            }
+        }
+    }
+    
+    func showLocal(latitude: Double, longitude: Double){
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude);
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01);
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span);
+        self.map.setRegion(region, animated: true);
     }
     
     //chamado no seletor do reconhecimento dos gestos
@@ -56,12 +117,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                             }
                         }
                     }
-                    // exibir anotao com os dados do endereço
-                    let annotation = MKPointAnnotation();
-                    annotation.coordinate.latitude = coordinate.latitude;
-                    annotation.coordinate.longitude = coordinate.longitude;
-                    annotation.title = localComplete;
-                    self.map.addAnnotation(annotation);
+                    //salvar viagem
+                    
+                    self.travel = ["local":localComplete, "latitude": String(coordinate.latitude),"longitude":String(coordinate.longitude)];
+                    ArmazenamentoDados().toSaveTravel(travel: self.travel);
+                    
+                    self.showAnnotationMap(travel: self.travel);
+                    
                 }
                 else
                 {

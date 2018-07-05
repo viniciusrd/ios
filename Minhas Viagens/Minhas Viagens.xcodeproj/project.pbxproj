@@ -13,6 +13,7 @@
 		98261D6420EAFE840082AEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98261D6320EAFE840082AEF4 /* Assets.xcassets */; };
 		98261D6720EAFE840082AEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98261D6520EAFE840082AEF4 /* LaunchScreen.storyboard */; };
 		98261D6F20EB0A1C0082AEF4 /* LocaisViagemControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98261D6E20EB0A1C0082AEF4 /* LocaisViagemControllerTableViewController.swift */; };
+		98B77FDA20EC445E0088AFB7 /* ArmazenamentoDados.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B77FD920EC445E0088AFB7 /* ArmazenamentoDados.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		98261D6620EAFE840082AEF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98261D6820EAFE840082AEF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98261D6E20EB0A1C0082AEF4 /* LocaisViagemControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaisViagemControllerTableViewController.swift; sourceTree = "<group>"; };
+		98B77FD920EC445E0088AFB7 /* ArmazenamentoDados.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArmazenamentoDados.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				98261D5C20EAFE820082AEF4 /* AppDelegate.swift */,
 				98261D5E20EAFE820082AEF4 /* ViewController.swift */,
+				98B77FD920EC445E0088AFB7 /* ArmazenamentoDados.swift */,
 				98261D6E20EB0A1C0082AEF4 /* LocaisViagemControllerTableViewController.swift */,
 				98261D6020EAFE820082AEF4 /* Main.storyboard */,
 				98261D6320EAFE840082AEF4 /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B77FDA20EC445E0088AFB7 /* ArmazenamentoDados.swift in Sources */,
 				98261D5F20EAFE820082AEF4 /* ViewController.swift in Sources */,
 				98261D5D20EAFE820082AEF4 /* AppDelegate.swift in Sources */,
 				98261D6F20EB0A1C0082AEF4 /* LocaisViagemControllerTableViewController.swift in Sources */,

@@ -37,7 +37,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aft-sF-Guh">
                             <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="1hP-93-eXx" kind="show" id="s9E-U1-bkX"/>
+                                <segue destination="1hP-93-eXx" kind="show" identifier="showMap" id="s9E-U1-bkX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

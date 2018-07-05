@@ -10,7 +10,8 @@ import UIKit
 
 class LocaisViagemControllerTableViewController: UITableViewController {
     
-    var locais: [String] = ["Local 1","Local 2"];
+    var locais: [Dictionary<String,String>] = [];
+    var controlNavigation: String = "Add";
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,16 @@ class LocaisViagemControllerTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        controlNavigation = "Add";
+        updateTravel();
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -43,7 +52,7 @@ class LocaisViagemControllerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Configure the cell...
-        let viagem = locais[ indexPath.row ];
+        let viagem = locais[ indexPath.row ]["local"];
         let cell = tableView.dequeueReusableCell(withIdentifier: "celulaViagem", for: indexPath);
         cell.textLabel?.text = viagem;
 
@@ -51,49 +60,47 @@ class LocaisViagemControllerTableViewController: UITableViewController {
     }
    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            
+            ArmazenamentoDados().toRemoveTravel(index:indexPath.row);
+            updateTravel();
+        }
+        
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //metodo para startar uma segue
+        self.controlNavigation = "List";
+        performSegue(withIdentifier: "showMap", sender: indexPath.row);
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if self.controlNavigation == "List"{
+            let viewControllerDestiny = segue.destination as! ViewController;
+            if segue.identifier == "showMap"{
+                
+                
+                if let getIndex = sender{
+                    let index = getIndex as! Int;
+                    
+                    viewControllerDestiny.travel = locais[index];
+                    viewControllerDestiny.indexSelected = index;
+                    
+                }
+            }else{
+                viewControllerDestiny.travel = [:];
+                viewControllerDestiny.indexSelected = -1;
+            }
+        }
     }
-    */
+    
+    func updateTravel(){
+        locais = ArmazenamentoDados().toListTravel();
+        tableView.reloadData();
+    }
 
 }
