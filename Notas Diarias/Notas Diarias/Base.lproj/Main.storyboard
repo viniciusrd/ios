@@ -13,18 +13,34 @@
         <!--Notas Diárias-->
         <scene sceneID="dbU-9d-4UJ">
             <objects>
-                <tableViewController id="pIV-hb-G9m" sceneMemberID="viewController">
+                <tableViewController id="pIV-hb-G9m" customClass="ListAnnotationsController" customModule="Notas_Diarias" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hqj-lc-vV9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hnb-M2-ISE">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellAnnotation" textLabel="weB-sT-LB3" detailTextLabel="k2W-lj-JjB" style="IBUITableViewCellStyleSubtitle" id="hnb-M2-ISE">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hnb-M2-ISE" id="Hsi-aA-l8w">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="weB-sT-LB3">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="k2W-lj-JjB">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -48,7 +64,7 @@
         <!--Adicionar-->
         <scene sceneID="DhN-ib-esc">
             <objects>
-                <viewController id="wa3-3A-ffE" sceneMemberID="viewController">
+                <viewController id="wa3-3A-ffE" customClass="AnnotationViewController" customModule="Notas_Diarias" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uyf-vf-N4i">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,8 +87,15 @@
                         <viewLayoutGuide key="safeArea" id="5jp-ja-Xem"/>
                     </view>
                     <navigationItem key="navigationItem" title="Adicionar" id="V6Z-LT-FhX">
-                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="fyv-9Y-G4e"/>
+                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="fyv-9Y-G4e">
+                            <connections>
+                                <action selector="save:" destination="wa3-3A-ffE" id="lF3-ih-rbk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="labelText" destination="KLq-rt-ttA" id="cxT-Ao-zYg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L6X-kn-IBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
