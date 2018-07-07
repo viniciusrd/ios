@@ -52,7 +52,7 @@
                     <navigationItem key="navigationItem" title="Notas Diárias" id="eqM-HH-gfw">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BOz-Ib-cdj">
                             <connections>
-                                <segue destination="wa3-3A-ffE" kind="show" id="gxm-NC-3dd"/>
+                                <segue destination="wa3-3A-ffE" kind="show" identifier="showAnnotation" id="gxm-NC-3dd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

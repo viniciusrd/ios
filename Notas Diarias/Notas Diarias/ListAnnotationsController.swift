@@ -33,12 +33,14 @@ class ListAnnotationsController: UITableViewController {
     func getAnnotations(){
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Annotation");
+        let sort =  NSSortDescriptor(key: "date", ascending: false);
+        request.sortDescriptors = [sort]
 
         do {
             let annotationsRecovered = try self.context.fetch(request);
             self.annotations = annotationsRecovered as! [NSManagedObject];
             self.tableView.reloadData();
-        } catch let execption as Error {
+        } catch let execption  {
             print("Erro: \(execption.localizedDescription)");
         }
         
@@ -49,6 +51,25 @@ class ListAnnotationsController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1;
+    }
+    
+    override  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        let annotationSelected = self.annotations[indexPath.row];
+        self.performSegue(withIdentifier: "showAnnotation", sender: annotationSelected)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showAnnotation"{
+            
+            let viewDestiny = segue.destination as! AnnotationViewController;
+            viewDestiny.annotation = sender as? NSManagedObject;    
+            
+        }
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,6 +89,28 @@ class ListAnnotationsController: UITableViewController {
         cell.detailTextLabel?.text = dateFormatter(date: date) ;
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete{
+            
+            let annotation = self.annotations[indexPath.row];
+            
+            self.context.delete(annotation);
+            self.annotations.remove(at: indexPath.row)
+            
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            do {
+                try context.save()
+                showAlert(sucess: true)
+            } catch let execption  {
+                print("Erro ao salvar anotação: \(execption.localizedDescription)");
+                showAlert(sucess: false)
+            }
+        }
+        
+    }
 
     func dateFormatter(date: Date) -> String {
         
@@ -77,6 +120,35 @@ class ListAnnotationsController: UITableViewController {
         return newDate;
     }
 
+    func showAlert(sucess: Bool){
+        
+        let textAlert: String = sucess ? "Nota Diária removida com sucesso!" : "Não foi possível removida a Nota Diária."
+        
+        //Configurando o alert
+        let alertController = UIAlertController(
+            title: "Notas Diárias - CoreData",
+            message: textAlert,
+            preferredStyle: UIAlertControllerStyle.alert
+        )
+        
+        let cancelAction = UIAlertAction(
+            title: "Cancel",
+            style: UIAlertActionStyle.destructive) { (action) in
+                // ...
+        }
+        
+        let confirmAction = UIAlertAction(
+        title: "OK", style: UIAlertActionStyle.default) { (action) in
+            // ...
+            //Retornar para tela princiap
+            self.navigationController?.popToRootViewController(animated: true);
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 
 
 }

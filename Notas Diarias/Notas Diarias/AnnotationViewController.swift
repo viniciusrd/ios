@@ -13,6 +13,7 @@ class AnnotationViewController: UIViewController {
 
     @IBOutlet weak var labelText: UITextView!
     var context: NSManagedObjectContext!
+    var annotation: NSManagedObject!
     
 
     override func viewDidLoad() {
@@ -21,7 +22,19 @@ class AnnotationViewController: UIViewController {
         //configuracoes iniciais
         // abrir o teclado
         self.labelText.becomeFirstResponder();
-        self.labelText.text = ""
+        
+        if annotation != nil {
+            
+            if let textRecovery = annotation.value(forKey: "text"){
+                self.labelText.text = String(describing: textRecovery);
+            }
+       
+            
+        }else{
+            self.labelText.text = "";
+        }
+        
+       
 
         // recuperar o contexto para o CoreData
         let appDelegate = UIApplication.shared.delegate as! AppDelegate;
@@ -45,11 +58,24 @@ class AnnotationViewController: UIViewController {
         do {
             try context.save()
             showAlert(sucess: true)
-        } catch let execption as Error {
+        } catch let execption {
             print("Erro ao salvar anotação: \(execption.localizedDescription)");
             showAlert(sucess: false)
         }
         
+    }
+    
+    func updateAnnotation() {
+        self.annotation.setValue(self.labelText.text, forKey: "text");
+        self.annotation.setValue(Date(), forKey: "date")
+        
+        do {
+            try context.save()
+            showAlert(sucess: true)
+        } catch let execption  {
+            print("Erro ao atualizar anotação: \(execption.localizedDescription)");
+            showAlert(sucess: false)
+        }
     }
     
     func showAlert(sucess: Bool){
@@ -86,12 +112,13 @@ class AnnotationViewController: UIViewController {
 
     @IBAction func save(_ sender: Any) {
         
-        if self.labelText.text != nil{
-            self.saveAnnotation();
+        if annotation != nil{
+            
+            self.updateAnnotation();
+            
+        }else if self.labelText.text != nil{
+                self.saveAnnotation();
         }
-        
-        
-        
     }
 
 }
