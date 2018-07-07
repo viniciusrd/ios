@@ -32,8 +32,8 @@
                                     <action selector="centralizePlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JZA-8H-i4C"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSt-qY-P3c">
-                                <rect key="frame" x="167" y="607" width="40" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSt-qY-P3c">
+                                <rect key="frame" x="162" y="607" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ab6-D0-ESS"/>
                                     <constraint firstAttribute="width" constant="50" id="g5p-1Z-NaN"/>
@@ -47,6 +47,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AA8-D2-Ky8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2EQ-Yf-nqi"/>
+                            <constraint firstItem="SSt-qY-P3c" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3kQ-ok-wTj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SSt-qY-P3c" secondAttribute="bottom" constant="10" id="8wX-aa-uUA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3hn-kg-nX6" secondAttribute="trailing" constant="10" id="CSv-br-LKQ"/>
                             <constraint firstItem="AA8-D2-Ky8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Jlt-aX-MTO"/>
