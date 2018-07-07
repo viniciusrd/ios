@@ -66,3 +66,15 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+Core Data Exemplo/Core Data Exemplo/ViewController.swift
+Core Data Exemplo/Core Data Exemplo/Info.plist
+Core Data Exemplo/Core Data Exemplo/Core_Data_Exemplo.xcdatamodeld/Core_Data_Exemplo.xcdatamodel/contents
+Core Data Exemplo/Core Data Exemplo/Core_Data_Exemplo.xcdatamodeld/.xccurrentversion
+Core Data Exemplo/Core Data Exemplo/Base.lproj/Main.storyboard
+Core Data Exemplo/Core Data Exemplo/Base.lproj/LaunchScreen.storyboard
+Core Data Exemplo/Core Data Exemplo/Assets.xcassets/Contents.json
+Core Data Exemplo/Core Data Exemplo/Assets.xcassets/AppIcon.appiconset/Contents.json
+Core Data Exemplo/Core Data Exemplo/AppDelegate.swift
+Core Data Exemplo/Core Data Exemplo.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+Core Data Exemplo/Core Data Exemplo.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+Core Data Exemplo/Core Data Exemplo.xcodeproj/project.pbxproj
