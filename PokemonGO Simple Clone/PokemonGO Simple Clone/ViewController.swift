@@ -55,8 +55,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil);
         
-        var image: [UIImageView] = [];
-        
         if annotation is MKUserLocation{
             annotationView.image = #imageLiteral(resourceName: "player");
         }else{
