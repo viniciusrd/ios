@@ -14,6 +14,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager();
     var count = 0;
+    var coreDataPokemon: CoreDataPokemon!;
+    var pokemons: [Pokemon] = [];
     
     
     override func viewDidLoad() {
@@ -32,18 +34,28 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { (timer) in
             
             if let coordinate = self.locationManager.location?.coordinate{
-               let annotationMap = MKPointAnnotation();
+                
+                let totalPokemons = UInt32 (self.pokemons.count);
+                let indexRandom = arc4random_uniform(totalPokemons);
+                
+                let pokemonGenereted = self.pokemons[Int(indexRandom)];
+                
+                let annotationMap = PokemonAnnotationMapView(coordinates: coordinate, pokemon: pokemonGenereted);
                 
                 let latRandom = (Double (arc4random_uniform(400)) - 250) / 100000.0;
                 let logRandom = (Double (arc4random_uniform(400)) - 250) / 100000.0;
                 
-                annotationMap.coordinate = coordinate;
+                
                 annotationMap.coordinate.latitude += latRandom;
                 annotationMap.coordinate.longitude += logRandom;
                 self.mapView.addAnnotation(annotationMap);
 
             }
         }
+        
+        //recuperar os pokemons
+        self.coreDataPokemon = CoreDataPokemon();
+        self.pokemons = self.coreDataPokemon.getPokemons();
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,10 +67,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil);
         
+    
         if annotation is MKUserLocation{
             annotationView.image = #imageLiteral(resourceName: "player");
         }else{
-            annotationView.image = #imageLiteral(resourceName: "pikachu-2");
+            let pokemonAnnotation = (annotation as! PokemonAnnotationMapView).pokemon;
+            annotationView.image = UIImage.init(named: pokemonAnnotation.nameImage!) ;
         }
         
         var frame = annotationView.frame;

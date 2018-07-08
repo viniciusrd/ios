@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		980CFD6720F1A875001CA27E /* CoreDataPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980CFD6620F1A875001CA27E /* CoreDataPokemon.swift */; };
+		9883CD3120F26BDA00EDDA21 /* PokemonAnnotationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9883CD3020F26BDA00EDDA21 /* PokemonAnnotationMapView.swift */; };
+		9883CD3320F2752D00EDDA21 /* PokemonScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9883CD3220F2752D00EDDA21 /* PokemonScheduleViewController.swift */; };
 		98FB5ED020F13100007689AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FB5ECF20F13100007689AE /* AppDelegate.swift */; };
 		98FB5ED220F13100007689AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FB5ED120F13100007689AE /* ViewController.swift */; };
 		98FB5ED520F13100007689AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98FB5ED320F13100007689AE /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		980CFD6620F1A875001CA27E /* CoreDataPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPokemon.swift; sourceTree = "<group>"; };
+		9883CD3020F26BDA00EDDA21 /* PokemonAnnotationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAnnotationMapView.swift; sourceTree = "<group>"; };
+		9883CD3220F2752D00EDDA21 /* PokemonScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonScheduleViewController.swift; sourceTree = "<group>"; };
 		98FB5ECC20F13100007689AE /* PokemonGO Simple Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PokemonGO Simple Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98FB5ECF20F13100007689AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98FB5ED120F13100007689AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 			children = (
 				98FB5ECF20F13100007689AE /* AppDelegate.swift */,
 				980CFD6620F1A875001CA27E /* CoreDataPokemon.swift */,
+				9883CD3020F26BDA00EDDA21 /* PokemonAnnotationMapView.swift */,
+				9883CD3220F2752D00EDDA21 /* PokemonScheduleViewController.swift */,
 				98FB5ED120F13100007689AE /* ViewController.swift */,
 				98FB5ED320F13100007689AE /* Main.storyboard */,
 				98FB5ED920F13101007689AE /* Assets.xcassets */,
@@ -154,7 +160,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				980CFD6720F1A875001CA27E /* CoreDataPokemon.swift in Sources */,
+				9883CD3120F26BDA00EDDA21 /* PokemonAnnotationMapView.swift in Sources */,
 				98FB5ED220F13100007689AE /* ViewController.swift in Sources */,
+				9883CD3320F2752D00EDDA21 /* PokemonScheduleViewController.swift in Sources */,
 				98FB5ED820F13100007689AE /* PokemonGO_Simple_Clone.xcdatamodeld in Sources */,
 				98FB5ED020F13100007689AE /* AppDelegate.swift in Sources */,
 			);

@@ -41,6 +41,7 @@
                                 <state key="normal" image="pokeball"/>
                                 <connections>
                                     <action selector="openPokedex:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mU3-pW-8BD"/>
+                                    <segue destination="pih-k9-gT7" kind="presentation" id="7FR-6g-uS5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -65,9 +66,60 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
+        <!--Pokemon Schedule View Controller-->
+        <scene sceneID="Q0u-nb-WN8">
+            <objects>
+                <viewController id="pih-k9-gT7" customClass="PokemonScheduleViewController" customModule="PokemonGO_Simple_Clone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZBJ-1f-ybC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gri-3T-YCG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Lak-VP-yct">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lak-VP-yct" id="LMQ-y7-IVp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SE0-0N-AFp">
+                                <rect key="frame" x="162.5" y="607" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="TC0-2a-Xmw"/>
+                                    <constraint firstAttribute="width" constant="50" id="dOQ-Mp-hbX"/>
+                                </constraints>
+                                <state key="normal" image="map"/>
+                                <connections>
+                                    <action selector="backToMap:" destination="pih-k9-gT7" eventType="touchUpInside" id="3dW-bU-9HC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SE0-0N-AFp" firstAttribute="centerX" secondItem="ZBJ-1f-ybC" secondAttribute="centerX" id="D92-MF-oT4"/>
+                            <constraint firstItem="BxG-ee-dST" firstAttribute="trailing" secondItem="gri-3T-YCG" secondAttribute="trailing" id="IZT-0M-QSq"/>
+                            <constraint firstItem="BxG-ee-dST" firstAttribute="bottom" secondItem="gri-3T-YCG" secondAttribute="bottom" id="K1s-p9-etk"/>
+                            <constraint firstItem="gri-3T-YCG" firstAttribute="top" secondItem="BxG-ee-dST" secondAttribute="top" id="VFM-96-oaF"/>
+                            <constraint firstItem="BxG-ee-dST" firstAttribute="bottom" secondItem="SE0-0N-AFp" secondAttribute="bottom" constant="10" id="ely-bt-2cA"/>
+                            <constraint firstItem="gri-3T-YCG" firstAttribute="leading" secondItem="BxG-ee-dST" secondAttribute="leading" id="fLy-jC-9Ll"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BxG-ee-dST"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l9L-Xa-Lhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="849" y="134"/>
+        </scene>
     </scenes>
     <resources>
         <image name="compass" width="40" height="40"/>
+        <image name="map" width="40" height="40"/>
         <image name="pokeball" width="40" height="40"/>
     </resources>
 </document>
