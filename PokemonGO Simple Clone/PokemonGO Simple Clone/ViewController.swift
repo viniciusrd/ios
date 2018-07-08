@@ -15,6 +15,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var locationManager = CLLocationManager();
     var count = 0;
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,11 +27,50 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.requestWhenInUseAuthorization();
         locationManager.startUpdatingLocation();
         
+        //Exibir os pokemons no mapa
+        // executar a cada 5 segundos
+        Timer.scheduledTimer(withTimeInterval: 8, repeats: true) { (timer) in
+            
+            if let coordinate = self.locationManager.location?.coordinate{
+               let annotationMap = MKPointAnnotation();
+                
+                let latRandom = (Double (arc4random_uniform(400)) - 250) / 100000.0;
+                let logRandom = (Double (arc4random_uniform(400)) - 250) / 100000.0;
+                
+                annotationMap.coordinate = coordinate;
+                annotationMap.coordinate.latitude += latRandom;
+                annotationMap.coordinate.longitude += logRandom;
+                self.mapView.addAnnotation(annotationMap);
+
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //substitui a annotation default do mapview
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil);
+        
+        var image: [UIImageView] = [];
+        
+        if annotation is MKUserLocation{
+            annotationView.image = #imageLiteral(resourceName: "player");
+        }else{
+            annotationView.image = #imageLiteral(resourceName: "pikachu-2");
+        }
+        
+        var frame = annotationView.frame;
+        frame.size.height = 40;
+        frame.size.width = 40;
+        
+        annotationView.frame = frame;
+        
+        return annotationView;
+        
     }
     
     // caso usuario nao der permissao do mapa
