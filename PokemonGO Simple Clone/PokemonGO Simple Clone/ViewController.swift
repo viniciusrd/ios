@@ -85,6 +85,62 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
     }
     
+    //anotacao do mapa selecionada
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let annotationMapView = view.annotation;
+        let pokemon = (view.annotation as! PokemonAnnotationMapView).pokemon
+        
+        //desmarcar anotacao
+        mapView.deselectAnnotation(annotationMapView, animated: true);
+        
+        if annotationMapView is MKUserLocation{
+            return
+        }
+        // verificando as coordenadas da anotacao do mapa que no caso eh o pokemon
+        // e ao clicar centralizar a tela naquela anotacao
+        if let coordinateAnnotation = annotationMapView?.coordinate{
+            let region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(coordinateAnnotation, 500, 500)
+            self.mapView.setRegion(region, animated: true)
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+            if let coord = self.locationManager.location?.coordinate{
+                //funcao que verifica que um ponto esta dentro da area visivel
+                if MKMapRectContainsPoint( self.mapView.visibleMapRect , MKMapPointForCoordinate(coord)) {
+                    self.coreDataPokemon.salvarPokemon(pokemon: pokemon);
+                    self.mapView.removeAnnotation(annotationMapView!);
+                    
+                    let alertController = UIAlertController(
+                        title: "Pokemón GO Clone",
+                        message: "Você conseguiu capturar o pokemon \(pokemon.name!)",
+                        preferredStyle: .alert)
+                    let ok = UIAlertAction(
+                        title: "Ok",
+                        style: .default,
+                        handler: nil)
+                    alertController.addAction(ok);
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                }else{
+                    let alertController = UIAlertController(
+                        title: "Pokemón GO Clone",
+                        message: "Ops!! Você precisa se aproximar mais para capturar o pokemon \(pokemon.name!)",
+                        preferredStyle: .alert)
+                    let ok = UIAlertAction(
+                        title: "Ok",
+                        style: .default,
+                        handler: nil)
+                    alertController.addAction(ok);
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+            }
+        }
+    }
+    
     // caso usuario nao der permissao do mapa
     // solicitar novamente
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

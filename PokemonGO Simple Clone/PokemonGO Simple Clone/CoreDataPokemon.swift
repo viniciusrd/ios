@@ -20,6 +20,18 @@ class CoreDataPokemon {
         return context!;
     }
     
+    func salvarPokemon(pokemon: Pokemon){
+        let context = getContext();
+        pokemon.captured = true;
+        
+        do {
+            try context.save();
+        } catch let execption {
+            print("Erro : \(execption.localizedDescription)");
+        }
+        
+    }
+    
     // adcionar todos pokemon
     func addAllPokemons() {
         
@@ -73,6 +85,26 @@ class CoreDataPokemon {
         } catch let exception {
             print(exception);
         }
+        
+        return [];
+        
+    }
+    
+    // retorna os pokemon capturados atraves de uma requisicao com filtro no CoreData
+    func getPokemonCaptured(capturedParam:Bool) -> [Pokemon]{
+        
+        let context = self.getContext();
+        let request = Pokemon.fetchRequest() as NSFetchRequest<Pokemon>;
+        
+        request.predicate = NSPredicate( format: "captured = %@", NSNumber(value: capturedParam) );
+    
+        do {
+            let pokemon = try context.fetch(request) as [Pokemon];
+            return pokemon;
+        } catch let exception {
+            print(exception);
+        }
+        
         
         return [];
         
