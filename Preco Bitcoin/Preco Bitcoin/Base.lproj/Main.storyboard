@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Preco_Bitcoin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="5WC-tL-lca">
+                                <rect key="frame" x="37.5" y="171" width="300" height="325"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoin" translatesAutoresizingMaskIntoConstraints="NO" id="ZxP-ef-iX2">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="MLn-32-TvC"/>
+                                            <constraint firstAttribute="height" constant="100" id="VuU-6T-0Ef"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 0,00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3Q-aF-hl7">
+                                        <rect key="frame" x="0.0" y="100" width="300" height="174"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
+                                        <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6Q-wz-LDU">
+                                        <rect key="frame" x="0.0" y="274" width="300" height="51"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <state key="normal" title="Atualizar"/>
+                                        <connections>
+                                            <action selector="updatePriceBitcoin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="05P-nn-cDw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="b6Q-wz-LDU" firstAttribute="top" secondItem="5WC-tL-lca" secondAttribute="top" constant="274" id="Iwq-d2-fZI"/>
+                                    <constraint firstAttribute="width" constant="300" id="gb1-Zs-7Lp"/>
+                                    <constraint firstAttribute="height" constant="325" id="hbB-9S-05V"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5WC-tL-lca" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DD9-uN-hNl"/>
+                            <constraint firstItem="5WC-tL-lca" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZVb-RB-0L8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonUpdate" destination="b6Q-wz-LDU" id="D03-MJ-xOH"/>
+                        <outlet property="priceBitcoin" destination="u3Q-aF-hl7" id="4gn-Fa-6fw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="117.39130434782609"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bitcoin" width="800" height="169"/>
+    </resources>
+</document>
