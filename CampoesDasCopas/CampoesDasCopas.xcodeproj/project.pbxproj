@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E798411223D3FEE00D028DA /* GamesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E798410223D3FEE00D028DA /* GamesTableViewCell.swift */; };
 		6ED57A072235D5C300FF4287 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED57A062235D5C300FF4287 /* AppDelegate.swift */; };
 		6ED57A0C2235D5C300FF4287 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6ED57A0A2235D5C300FF4287 /* Main.storyboard */; };
 		6ED57A0E2235D5C500FF4287 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6ED57A0D2235D5C500FF4287 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E798410223D3FEE00D028DA /* GamesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesTableViewCell.swift; sourceTree = "<group>"; };
 		6ED57A032235D5C300FF4287 /* CampoesDasCopas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampoesDasCopas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ED57A062235D5C300FF4287 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6ED57A0B2235D5C300FF4287 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				6ED57A1E2235D9FD00FF4287 /* Views */,
 				6ED57A0D2235D5C500FF4287 /* Assets.xcassets */,
 				6ED57A122235D5C500FF4287 /* Info.plist */,
+				6E798410223D3FEE00D028DA /* GamesTableViewCell.swift */,
 			);
 			path = CampoesDasCopas;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				6ED57A202235DA2400FF4287 /* WinnersTableViewController.swift in Sources */,
 				6ED57A292235DB5B00FF4287 /* Game.swift in Sources */,
 				6ED57A252235DA8300FF4287 /* WorldCup.swift in Sources */,
+				6E798411223D3FEE00D028DA /* GamesTableViewCell.swift in Sources */,
 				6ED57A912235F2A600FF4287 /* WorldCupTableViewCell.swift in Sources */,
 				6ED57A222235DA4A00FF4287 /* WorldCupViewController.swift in Sources */,
 				6ED57A272235DB3A00FF4287 /* Match.swift in Sources */,
@@ -535,6 +539,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K263L273XJ;
 				INFOPLIST_FILE = CampoesDasCopas/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -552,6 +557,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K263L273XJ;
 				INFOPLIST_FILE = CampoesDasCopas/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
