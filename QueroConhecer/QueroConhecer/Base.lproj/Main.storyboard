@@ -80,6 +80,9 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" name="Main"/>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="53z-2g-kyW">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="NZV-XD-N65">
                                 <rect key="frame" x="10" y="126" width="355" height="531"/>
                                 <subviews>
@@ -90,8 +93,11 @@
                                         </constraints>
                                         <color key="barTintColor" name="Main"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="fQt-WO-hQu" id="VbO-9Q-l5T"/>
+                                        </connections>
                                     </searchBar>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kbn-Y0-rgg">
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" translatesAutoresizingMaskIntoConstraints="NO" id="kbn-Y0-rgg">
                                         <rect key="frame" x="0.0" y="50" width="355" height="315"/>
                                     </mapView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FGG-rQ-s45">
@@ -140,11 +146,13 @@
                         <constraints>
                             <constraint firstItem="TNG-cJ-GQL" firstAttribute="top" secondItem="v9M-Q0-p91" secondAttribute="top" id="DT4-GL-xCI"/>
                             <constraint firstItem="v9M-Q0-p91" firstAttribute="trailing" secondItem="TNG-cJ-GQL" secondAttribute="trailing" id="DuD-G3-MEN"/>
+                            <constraint firstItem="53z-2g-kyW" firstAttribute="centerY" secondItem="bGQ-Cb-F6k" secondAttribute="centerY" id="HJH-3M-MfV"/>
                             <constraint firstItem="v9M-Q0-p91" firstAttribute="bottom" secondItem="NZV-XD-N65" secondAttribute="bottom" constant="10" id="Loo-YC-l0x"/>
                             <constraint firstItem="v9M-Q0-p91" firstAttribute="bottom" secondItem="TNG-cJ-GQL" secondAttribute="bottom" id="PsN-F8-jBO"/>
                             <constraint firstItem="NZV-XD-N65" firstAttribute="leading" secondItem="v9M-Q0-p91" secondAttribute="leading" constant="10" id="YAi-Qp-n2R"/>
                             <constraint firstItem="NZV-XD-N65" firstAttribute="top" secondItem="v9M-Q0-p91" secondAttribute="top" constant="10" id="vtM-bA-Ah7"/>
                             <constraint firstItem="TNG-cJ-GQL" firstAttribute="leading" secondItem="v9M-Q0-p91" secondAttribute="leading" id="wf6-Z9-yIb"/>
+                            <constraint firstItem="53z-2g-kyW" firstAttribute="centerX" secondItem="bGQ-Cb-F6k" secondAttribute="centerX" id="xYb-sO-wEM"/>
                             <constraint firstItem="v9M-Q0-p91" firstAttribute="trailing" secondItem="NZV-XD-N65" secondAttribute="trailing" constant="10" id="zLH-Un-3yA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v9M-Q0-p91"/>
@@ -159,6 +167,7 @@
                     <connections>
                         <outlet property="lbAddress" destination="pc2-3y-M2s" id="1qh-XT-16B"/>
                         <outlet property="lbName" destination="pLq-gL-W1g" id="xda-Sp-lDz"/>
+                        <outlet property="loading" destination="53z-2g-kyW" id="dga-Ed-bMl"/>
                         <outlet property="mapView" destination="kbn-Y0-rgg" id="2ba-re-52J"/>
                         <outlet property="searchBar" destination="fik-fQ-Bd0" id="yi5-Dv-yLy"/>
                         <outlet property="viInfo" destination="FGG-rQ-s45" id="mPK-vw-ZF9"/>

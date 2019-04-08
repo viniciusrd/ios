@@ -30,7 +30,13 @@ class PlacesTableViewController: UITableViewController {
             let viewController = segue.destination as! PlacesFinderViewController
             viewController.delegate = self
         }else{
-            let vc = segue.destination as! MapViewController
+            let viewController = segue.destination as! MapViewController
+            switch sender{
+            case let place as Place:
+                viewController.places = [place]
+            default:
+                viewController.places = places
+            }
         }
     }
     
@@ -54,7 +60,7 @@ class PlacesTableViewController: UITableViewController {
     }
 
     @objc func showAll(){
-        
+        performSegue(withIdentifier: "mapSegue", sender: nil)
     }
     
     
@@ -73,6 +79,7 @@ class PlacesTableViewController: UITableViewController {
             tableView.backgroundView = nil
         }else{
             navigationItem.leftBarButtonItem = nil
+            tableView.backgroundView = lbNoPlaces
         }
         return places.count
     }
