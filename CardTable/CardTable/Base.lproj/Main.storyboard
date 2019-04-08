@@ -22,28 +22,41 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="137" id="aSE-6k-GIV">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="137" id="aSE-6k-GIV" customClass="TableViewCell" customModule="CardTable" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aSE-6k-GIV" id="LIX-X4-u9N">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aSE-6k-GIV" id="LIX-X4-u9N">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="136.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eS1-3t-H6K" customClass="DesignView" customModule="CardTable" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="8" width="359" height="120"/>
+                                                    <rect key="frame" x="8" y="8" width="359" height="120.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqn-tJ-5wx">
-                                                            <rect key="frame" x="158.5" y="49.5" width="42" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="DjA-fK-oks">
+                                                            <rect key="frame" x="8" y="9" width="343" height="103.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqn-tJ-5wx">
+                                                                    <rect key="frame" x="150.5" y="0.0" width="42" height="36.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsj-Fs-2dF">
+                                                                    <rect key="frame" x="148.5" y="44.5" width="46" height="59"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <connections>
+                                                                        <action selector="clickedButton:" destination="aSE-6k-GIV" eventType="touchUpInside" id="oXd-hq-7g4"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                    <color key="backgroundColor" red="1" green="0.9412161696056337" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="120" id="fNq-5r-87G"/>
-                                                        <constraint firstItem="Oqn-tJ-5wx" firstAttribute="centerY" secondItem="eS1-3t-H6K" secondAttribute="centerY" id="j2Q-VJ-WEh"/>
-                                                        <constraint firstItem="Oqn-tJ-5wx" firstAttribute="centerX" secondItem="eS1-3t-H6K" secondAttribute="centerX" id="ran-8a-NVR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="DjA-fK-oks" secondAttribute="trailing" constant="8" id="PWR-Rv-JR2"/>
+                                                        <constraint firstItem="DjA-fK-oks" firstAttribute="leading" secondItem="eS1-3t-H6K" secondAttribute="leading" constant="8" id="Tau-2t-fAZ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="DjA-fK-oks" secondAttribute="bottom" constant="8" id="t7y-tv-8PE"/>
+                                                        <constraint firstItem="DjA-fK-oks" firstAttribute="top" secondItem="eS1-3t-H6K" secondAttribute="top" constant="9" id="veq-Vs-bm4"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -59,6 +72,11 @@
                                                 <constraint firstItem="eS1-3t-H6K" firstAttribute="leading" secondItem="LIX-X4-u9N" secondAttribute="leading" constant="8" id="dtl-EI-4oJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="button" destination="tsj-Fs-2dF" id="Qba-4E-mn6"/>
+                                            <outlet property="label" destination="Oqn-tJ-5wx" id="LbJ-jO-1Xc"/>
+                                            <outlet property="stackView" destination="DjA-fK-oks" id="zbw-QJ-haV"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

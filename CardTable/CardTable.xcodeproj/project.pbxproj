@@ -13,6 +13,7 @@
 		6EEB432C225ABF7B00EC23BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EEB432B225ABF7B00EC23BA /* Assets.xcassets */; };
 		6EEB432F225ABF7B00EC23BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EEB432D225ABF7B00EC23BA /* LaunchScreen.storyboard */; };
 		6EEB4337225AC1E000EC23BA /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEB4336225AC1E000EC23BA /* DesignView.swift */; };
+		6EEB4339225ACB9600EC23BA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEB4338225ACB9600EC23BA /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6EEB432E225ABF7B00EC23BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6EEB4330225ABF7B00EC23BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EEB4336225AC1E000EC23BA /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
+		6EEB4338225ACB9600EC23BA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				6EEB432D225ABF7B00EC23BA /* LaunchScreen.storyboard */,
 				6EEB4330225ABF7B00EC23BA /* Info.plist */,
 				6EEB4336225AC1E000EC23BA /* DesignView.swift */,
+				6EEB4338225ACB9600EC23BA /* TableViewCell.swift */,
 			);
 			path = CardTable;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EEB4337225AC1E000EC23BA /* DesignView.swift in Sources */,
+				6EEB4339225ACB9600EC23BA /* TableViewCell.swift in Sources */,
 				6EEB4327225ABF7A00EC23BA /* ViewController.swift in Sources */,
 				6EEB4325225ABF7A00EC23BA /* AppDelegate.swift in Sources */,
 			);

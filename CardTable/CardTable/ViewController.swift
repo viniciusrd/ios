@@ -29,12 +29,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         cell.contentView.backgroundColor = UIColor(white: 0.95, alpha:  1)
+        cell.label.text = "Card: \(indexPath)"
+        cell.delegate = self
         
         return cell
     }
 
 
+}
+
+extension ViewController: TableViewCellDelegate{
+    func didTapButton() {
+        print("clicked")
+    }
 }
 
