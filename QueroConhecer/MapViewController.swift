@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
         case authorizationWarning
     }
     
+    // MARK: - IBOutlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var viInfo: UIView!
@@ -23,9 +24,11 @@ class MapViewController: UIViewController {
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
+    // MARK: - Properties
     var places: [Place]!
     var pointsOfInterest: [MKAnnotation] = []
     var btnUserLocation: MKUserTrackingButton!
+    var selectedAnnotation: PlaceAnnotation?
     
     lazy var locationManaget = CLLocationManager()
     
@@ -35,6 +38,8 @@ class MapViewController: UIViewController {
         locationManaget.delegate = self
         searchBar.isHidden = true
         viInfo.isHidden = true
+        
+        configureLocationButton()
         
         if places.count == 1{
             title = places[0].name
@@ -89,8 +94,47 @@ class MapViewController: UIViewController {
     func showPlaces()  {
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
-
+    
+    func showInfo()  {
+        lbName.text = selectedAnnotation?.title ?? "Not Found"
+        lbAddress.text = selectedAnnotation?.address ?? "Not Found"
+        viInfo.isHidden = false
+    }
+    
     @IBAction func showRoute(_ sender: UIButton) {
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse{
+            showMessage(type: .authorizationWarning)
+            return
+        }
+        
+        let request = MKDirections.Request()
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: selectedAnnotation!.coordinate))
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: locationManaget.location!.coordinate))
+        let directions = MKDirections(request: request)
+        directions.calculate { (response, error) in
+            if error == nil, let response = response{
+                self.mapView.removeOverlays(self.mapView.overlays)
+                let route = response.routes.first!
+                print("Name: \(route.name)")
+                print("Distance: \(route.distance)")
+                print("Duration: \(route.expectedTravelTime)")
+                print("######################################")
+                
+                for step in route.steps{
+                    print("Em \(step.distance) metros(s), \(step.instructions)")
+                }
+                
+                self.mapView.addOverlay(route.polyline, level: .aboveRoads)
+                var annotations = self.mapView.annotations.filter({!($0 is PlaceAnnotation)})
+                annotations.append(self.selectedAnnotation!)
+                self.mapView.showAnnotations(annotations, animated: true)
+                
+                
+            }else{
+                self.showMessage(type: .routeError)
+            }
+        }
+        
         
     }
     
@@ -101,22 +145,25 @@ class MapViewController: UIViewController {
     }
     
     func showMessage(type: MapMessageType){
-//        let title: String, message: String
-//        var hasConfirmation: Bool = false
-//
-//        switch type {
-//        case .confirmation(let name):
-//            title = "Local Encontrado"
-//            message = "Deseja adicionar \(name)?"
-//            hasConfirmation = true
-//        case .error(let errorMessage):
-//            title = "Erro"
-//            message = errorMessage
-//        }
+        let title = type == .authorizationWarning ? "Aviso" : "Erro"
+        let message = type == .authorizationWarning ? "Para usar os recursos de localização do App, você precisa permitir o uso na tela de Ajustes" : "Não foi possível encontrar esta rota"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        if type == .authorizationWarning{
+            let confirmAction = UIAlertAction(title: "Ir para ajustes", style: .default) { (UIAlertAction) in
+                
+                if let appSetting = URL(string: UIApplication.openSettingsURLString){
+                    UIApplication.shared.open(appSetting, options: [:], completionHandler: nil)
+                }
+            }
+            alert.addAction(confirmAction)
+        }
+        present(alert, animated: true, completion: nil)
     }
     
 }
-
+// MARK: - Extensions
 extension MapViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if !(annotation is PlaceAnnotation){
@@ -135,6 +182,28 @@ extension MapViewController: MKMapViewDelegate{
         annotationView?.displayPriority = type == .place ? .required : .defaultHigh
         
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let camera = MKMapCamera()
+        camera.centerCoordinate = (view.annotation!.coordinate)
+        camera.pitch = 80
+        camera.altitude = 100
+        mapView.setCamera(camera, animated: true)
+    
+        selectedAnnotation = (view.annotation as! PlaceAnnotation)
+        showInfo()
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline{
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = UIColor(named: "Main")?.withAlphaComponent(0.8)
+            renderer.lineWidth = 5.0
+            return renderer
+        }
+        return MKOverlayRenderer(overlay: overlay)
     }
 }
 
@@ -184,6 +253,10 @@ extension MapViewController: CLLocationManagerDelegate{
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations.last!)
+//        if let location = locations.last{
+//            print("Velocidade: \(location.speed)")
+//            let region = MKCoordinateRegion(center: location.coordinate,latitudinalMeters: 500,longitudinalMeters: 500)
+//            mapView.setRegion(region, animated: true)
+//        }
     }
 }
