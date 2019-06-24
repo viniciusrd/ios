@@ -15,13 +15,38 @@ class GameViewController: UIViewController {
     @IBOutlet weak var lbReleaseDate: UILabel!
     @IBOutlet weak var ivCover: UIImageView!
     
+    var game: Game!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lbTitle.text = game.title
+        lbConsole.text = game.console?.name
+        guard let releaseDate = game.releaseDate else {
+            lbReleaseDate.text = ""
+            return
+        }
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.locale = Locale(identifier: "pt-BR")
+        lbReleaseDate.text = "Lançamento: \(formatter.string(from: releaseDate))"
+        guard let image = game.cover as? UIImage else {
+            ivCover.image = UIImage(named: "noCoverFull")
+            return
+        }
+        ivCover.image = image
     }
     
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! AddEditViewController
+        vc.game = game
+        
+    }
+    
     /*
     // MARK: - Navigation
 

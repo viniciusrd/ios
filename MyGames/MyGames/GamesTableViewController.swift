@@ -30,6 +30,13 @@ class GamesTableViewController: UITableViewController {
         loadGames()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier! == "gameSegue"{
+            let vc = segue.destination as! GameViewController
+            guard let games = fetchedResultController.fetchedObjects else { return }
+            vc.game = games[tableView.indexPathForSelectedRow!.row]
+        }
+    }
     
     func loadGames()  {
         let fetchRequest: NSFetchRequest<Game> = Game.fetchRequest()
@@ -66,24 +73,21 @@ class GamesTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let game = fetchedResultController.fetchedObjects?[indexPath.row] else { return }
+            context.delete(game)
+            
+        } else if editingStyle == .insert {
+            
+        }
 
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
     }
     */
 
@@ -120,7 +124,9 @@ extension GamesTableViewController: NSFetchedResultsControllerDelegate{
         
         switch type {
             case .delete:
-                break
+                if let indexPath = indexPath{
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+            }
             default:
                 tableView.reloadData()
             }

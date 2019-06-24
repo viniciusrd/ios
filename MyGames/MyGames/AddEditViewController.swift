@@ -30,7 +30,28 @@ class AddEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        prepeareTextField()
+        setupUI()
+    }
+    
+    func setupUI()  {
+        guard let game = game else { return }
+        title = "Editar Jogo"
+        btAddEdit.setTitle("Alterar", for: .normal)
+        tfNameGame.text = game.title
+        guard let console = game.console, let index = consolesManager.consoles.index(of: console) else { return }
+        tfConsole.text = console.name
+        pickerView.selectRow(index, inComponent: 0, animated: false)
+        ivCover.image = game.cover as? UIImage
+        if let releaseDate = game.releaseDate{
+            dtReleaseDate.date = releaseDate
+        }
+        if  game.cover != nil{
+            btCover.setTitle(nil, for: .normal)
+        }
+    }
+    
+    func prepeareTextField()  {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
         toolbar.tintColor = UIColor(named: "main")
         let btCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
