@@ -1,4 +1,4 @@
-# IOS - Swift
+# basic IOS Developer - Swift
 
 This repository is for me share my learning as ios developer.
 
